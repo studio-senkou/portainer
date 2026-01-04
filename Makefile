@@ -17,9 +17,9 @@ ssl:
 	@openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 		-keyout ssl/key.pem \
 		-out ssl/cert.pem \
-		-subj "/C=ID/ST=Local/L=Local/O=Dev/CN=localhost"
+		-subj "/C=ID/ST=Local/L=Local/O=Dev/CN=$${DOMAIN:-localhost}"
 	@chmod 644 ssl/*.pem
-	@echo "SSL certificate generated in ./ssl/"
+	@echo "SSL certificate generated for $${DOMAIN:-localhost}"
 
 build:
 	$(COMPOSE) build --no-cache
