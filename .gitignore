@@ -1,0 +1,4 @@
+.env
+ssl/*.pem
+*.log
+.DS_Store
